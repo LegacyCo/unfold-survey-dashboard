@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Unfold Beta — Survey Insights</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#f6f1e7;--bg2:#fbf8f1;--card:#fffdf8;--ink:#2b2722;--muted:#7c7264;--line:#e6ddcd;
+    --accent:#d97a34;--accent-soft:#f2c9a4;--good:#5a8f6b;--warn:#d9a441;--bad:#c4623f;--blue:#5b7a99;
+    --shadow:0 1px 2px rgba(60,45,25,.05),0 8px 24px rgba(60,45,25,.06);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:linear-gradient(180deg,var(--bg),#efe7d8 120%);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;padding:40px 28px 80px}
+  header.page{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:8px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .badge{width:46px;height:46px;border-radius:13px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:700;box-shadow:var(--shadow);font-family:Georgia,serif}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:600;font-size:30px;margin:0;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:14px;margin-top:2px}
+  .meta{text-align:right;color:var(--muted);font-size:12.5px}
+  .meta b{color:var(--ink)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:26px 0 10px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;box-shadow:var(--shadow)}
+  .kpi .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .kpi .val{font-size:30px;font-weight:700;font-family:Georgia,serif;margin-top:6px;line-height:1.1}
+  .kpi .val small{font-size:14px;font-weight:600;color:var(--muted);font-family:inherit}
+  .kpi .note{font-size:12px;color:var(--muted);margin-top:6px}
+  .kpi.accent{background:linear-gradient(160deg,#fff,#fdeede);border-color:var(--accent-soft)}
+  section{margin-top:34px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+  .sec-head h2{font-family:Georgia,serif;font-size:20px;margin:0;font-weight:600}
+  .sec-head .tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:#fbe7d4;padding:3px 9px;border-radius:999px}
+  .sec-sub{color:var(--muted);font-size:13.5px;margin:0 0 16px;max-width:760px}
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:1.4fr 1fr}
+  .g2e{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+  .card h3{margin:0 0 2px;font-size:15px;font-weight:700}
+  .card .ch-sub{color:var(--muted);font-size:12.5px;margin:0 0 12px}
+  .chart-box{position:relative;height:300px}
+  .chart-box.tall{height:360px}
+  .chart-box.short{height:210px}
+  .score-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line)}
+  .score-row:last-child{border-bottom:0}
+  .score-row .name{font-size:13px}
+  .bar{height:8px;border-radius:6px;background:#ece3d3;width:160px;position:relative;overflow:hidden}
+  .bar > span{position:absolute;left:0;top:0;bottom:0;border-radius:6px}
+  .scoreline{display:flex;align-items:center;gap:10px}
+  .pill{font-weight:700;font-size:13px;min-width:34px;text-align:right}
+  .quotes{display:grid;gap:12px}
+  .quote{background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:12px 14px}
+  .quote p{margin:0;font-size:13.5px}
+  .quote .who{display:block;margin-top:7px;font-size:11.5px;color:var(--muted);font-weight:600}
+  .col-quotes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .fric-group{margin-bottom:18px}
+  .fric-group:last-child{margin-bottom:0}
+  .fric-head{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+  .fric-head .chip{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#fff;padding:3px 10px;border-radius:999px}
+  .fric-head .cnt{font-size:12px;color:var(--muted)}
+  .fric-item{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-bottom:9px;font-size:13.5px}
+  .fric-item .who{display:block;margin-top:6px;font-size:11.5px;color:var(--muted);font-weight:600}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px}
+  .callout{background:linear-gradient(160deg,#fff,#fdeede);border:1px solid var(--accent-soft);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow)}
+  .callout h3{margin:0 0 10px;font-family:Georgia,serif;font-size:18px}
+  .callout ol{margin:0;padding-left:20px}
+  .callout li{margin:7px 0;font-size:14px}
+  .callout li b{color:var(--accent)}
+  footer{margin-top:40px;color:var(--muted);font-size:12px;text-align:center;border-top:1px solid var(--line);padding-top:18px}
+  .foot-note{font-size:11.5px;color:var(--muted);margin-top:6px}
+  #loading{padding:60px 0;text-align:center;color:var(--muted)}
+  #error{display:none;background:#f6dcd2;color:#a23c1c;border:1px solid #e7b9a6;border-radius:12px;padding:16px 18px;margin:20px 0;font-size:14px}
+  @media (max-width:920px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .g2,.g2e,.g3{grid-template-columns:1fr}
+    .col-quotes{grid-template-columns:1fr}
+    .meta{text-align:left}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page">
+    <div class="brand">
+      <div class="badge">U</div>
+      <div>
+        <h1>Unfold Beta — Survey Insights</h1>
+        <div class="sub">Neil's Bible Reading Plan · beta feedback synthesized for the road to launch</div>
+      </div>
+    </div>
+    <div class="meta">
+      <div><b id="nResp">—</b> responses · data refreshed <b id="genAt">—</b></div>
+      <div id="srcLine">Source: Notion "Unfold Beta — User Survey"</div>
+    </div>
+  </header>
+
+  <div id="error"></div>
+  <div id="loading">Loading survey data…</div>
+
+  <div id="dash" style="display:none">
+    <div class="kpis" id="kpis"></div>
+
+    <section>
+      <div class="sec-head"><span class="tag">Roadmap</span><h2>What to build next</h2></div>
+      <p class="sec-sub">Average interest per proposed feature (1 = not interested · 5 = would use a lot). This ranks the backlog by demand. Bars are colored by demand tier.</p>
+      <div class="grid g2">
+        <div class="card">
+          <h3>Feature interest, ranked</h3>
+          <p class="ch-sub">Mean score across all respondents</p>
+          <div class="chart-box tall"><canvas id="featChart"></canvas></div>
+        </div>
+        <div class="callout"><h3>The read</h3><ol id="readList"></ol></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="tag">Quality</span><h2>Experience scorecard</h2></div>
+      <p class="sec-sub">How the current build feels (1 = strongly disagree · 5 = strongly agree). Green ≥ 4.5 · amber 3.5–4.4 · red &lt; 3.5.</p>
+      <div class="grid g2e">
+        <div class="card"><h3>Satisfaction by dimension</h3><p class="ch-sub">Mean agreement score</p><div id="scorecard"></div></div>
+        <div class="card"><h3>Reading-plan engagement</h3><p class="ch-sub">The contemplative reading core at a glance</p><div class="chart-box"><canvas id="expRadar"></canvas></div></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="tag">Adoption</span><h2>Feature usage &amp; audience</h2></div>
+      <p class="sec-sub">Who tested, on what, and which features they actually reached for.</p>
+      <div class="grid g3">
+        <div class="card"><h3>Scribe vs. Journal usage</h3><p class="ch-sub">How often each was used</p><div class="chart-box short"><canvas id="usageChart"></canvas></div></div>
+        <div class="card"><h3>Bible reading before Unfold</h3><p class="ch-sub">Baseline habit of testers</p><div class="chart-box short"><canvas id="freqChart"></canvas></div></div>
+        <div class="card"><h3>Background music</h3><p class="ch-sub">Usage during sessions</p><div class="chart-box short"><canvas id="musicChart"></canvas></div></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="tag">Stability</span><h2>Bugs &amp; friction to clear before beta</h2></div>
+      <p class="sec-sub">Every non-empty report from the open-text "stuck / confusing / clunky / couldn't-figure-out" fields, grouped by type. Auto-pulled and always current — hand-triage severity from here.</p>
+      <div class="card"><div id="friction"></div></div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="tag">Verbatim</span><h2>In their words</h2></div>
+      <div class="grid g2e">
+        <div class="card"><h3>💛 What's landing</h3><p class="ch-sub">Single best thing about Unfold</p><div class="quotes" id="bestQuotes"></div></div>
+        <div class="card"><h3>🛠 The ONE thing for the next 30 days</h3><p class="ch-sub">Direct roadmap votes from each tester</p><div class="quotes" id="oneQuotes"></div></div>
+      </div>
+      <div class="card" style="margin-top:18px"><h3>🔍 Most-used feature &amp; why</h3><p class="ch-sub">Where attention concentrates today</p><div class="col-quotes" id="mostQuotes"></div></div>
+    </section>
+
+    <footer>
+      <span id="footMeta"></span>
+      <div class="foot-note">Sample is small — treat directional, not statistical. Strong for theme-finding, weak for precision. A few ratings entered as “6” on a 1–5 scale are capped to 5 for averaging. Re-runs automatically as new responses arrive.</div>
+    </footer>
+  </div>
+</div>
+
+<script>
+const COL={accent:'#d97a34',accentSoft:'#f2c9a4',good:'#5a8f6b',warn:'#d9a441',bad:'#c4623f',blue:'#5b7a99',line:'#e6ddcd',ink:'#2b2722',muted:'#7c7264'};
+Chart.defaults.font.family='-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif';
+Chart.defaults.color=COL.muted; Chart.defaults.font.size=12;
+
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const clamp5=v=>v==null?null:Math.min(5,v);
+const mean=arr=>{const v=arr.filter(x=>x!=null);return v.length?v.reduce((a,b)=>a+b,0)/v.length:0;};
+const tierColor=v=>v>=4.5?COL.good:v>=3.5?COL.warn:v>=2.5?COL.blue:COL.bad;
+const EMPTY=new Set(['','none','n/a','na','no','no.','-','–','—','yes','???','no5','.']);
+const isEmpty=s=>!s||EMPTY.has(String(s).trim().toLowerCase());
+
+const FEAT_LABELS={audio:'Audio Bible',twoModes:'Two modes: Read / Explore',planCustom:'Reading-plan customization',reminders:'Daily reminders / streaks',printExport:'Print / export notes',offline:'Offline reading',group:'Group / community reading',moreMusic:'More music tracks',shareImage:'Share verse as image',watch:'Apple Watch companion'};
+const SCORE_LABELS={tapping:'Tapping verses feels natural',controls:'Font / dark mode / translation controls easy',flow:'Section flow keeps reading fresh',scribeVoice:'Scribe sounds like Neil',lookFeel:'Calm & contemplative look',onboarding:'Sign-up & onboarding smooth',noteIcon:'Verse-note icon easy to find',journalEase:'Journal create / search / revisit easy'};
+
+fetch('data.json?_='+Date.now()).then(r=>{if(!r.ok)throw new Error('data.json '+r.status);return r.json();})
+ .then(render)
+ .catch(e=>{document.getElementById('loading').style.display='none';const x=document.getElementById('error');x.style.display='block';x.textContent='Could not load data.json — '+e.message+'. If viewing locally, serve the folder over http (e.g. `python3 -m http.server`) rather than opening the file directly.';});
+
+function render(DB){
+  const RAW=DB.responses||[];
+  const N=RAW.length;
+  document.getElementById('loading').style.display='none';
+  document.getElementById('dash').style.display='block';
+  document.getElementById('nResp').textContent=N;
+  const g=DB.generatedAt?new Date(DB.generatedAt):null;
+  document.getElementById('genAt').textContent=g?g.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'}):'—';
+  if(DB.source)document.getElementById('srcLine').textContent='Source: '+DB.source;
+  document.getElementById('footMeta').textContent='Generated from live Notion data · n = '+N+(g?' · refreshed '+g.toLocaleString():'');
+
+  const avgR=k=>mean(RAW.map(d=>clamp5(d.r?.[k])));
+  const avgF=k=>mean(RAW.map(d=>clamp5(d.f?.[k])));
+  const count=sel=>{const m={};RAW.forEach(d=>{const v=sel(d);(Array.isArray(v)?v:[v]).forEach(x=>{if(x!=null&&x!=='')m[x]=(m[x]||0)+1;});});return m;};
+
+  /* feature interest */
+  const featData=Object.keys(FEAT_LABELS).map(k=>({k,l:FEAT_LABELS[k],v:avgF(k)})).sort((a,b)=>b.v-a.v);
+  const netNew=featData.filter(f=>f.k!=='twoModes');
+  const topNet=netNew[0];
+  const bottom=featData.slice(-3).reverse();
+
+  /* experience */
+  const scoreData=Object.keys(SCORE_LABELS).map(k=>({k,l:SCORE_LABELS[k],v:avgR(k)})).sort((a,b)=>b.v-a.v);
+  const overallExp=mean(Object.keys(SCORE_LABELS).map(avgR));
+  const calm=avgR('lookFeel');
+  const bestDim=scoreData[0], worstDim=scoreData[scoreData.length-1];
+
+  /* KPIs */
+  const kpis=[
+    {label:'Responses',val:N,note:'beta testers'},
+    {label:'Overall experience',val:overallExp.toFixed(1),unit:'/5',note:'avg across '+Object.keys(SCORE_LABELS).length+' quality dimensions'},
+    {label:'Calm & contemplative',val:calm.toFixed(1),unit:'/5',note:'core brand promise'},
+    {label:'Top net-new request',val:topNet.l,note:'interest '+topNet.v.toFixed(1)+'/5',cls:'accent',small:true}
+  ];
+  document.getElementById('kpis').innerHTML=kpis.map(k=>`
+    <div class="kpi ${k.cls||''}">
+      <div class="label">${k.label}</div>
+      <div class="val" style="${k.small?'font-size:19px':''}">${esc(k.val)}${k.unit?`<small>${k.unit}</small>`:''}</div>
+      <div class="note">${esc(k.note)}</div>
+    </div>`).join('');
+
+  /* the read (dynamic) */
+  document.getElementById('readList').innerHTML=[
+    `<b>${esc(featData[0].l)}</b> is the strongest demand signal (${featData[0].v.toFixed(1)}/5) — protect and polish.`,
+    `<b>${esc(topNet.l)}</b> is the clear #1 net-new build (${topNet.v.toFixed(1)}/5).`,
+    `Strongest in the current build: <b>${esc(bestDim.l.toLowerCase())}</b> (${bestDim.v.toFixed(1)}). Weakest to fix: <b>${esc(worstDim.l.toLowerCase())}</b> (${worstDim.v.toFixed(1)}).`,
+    `Lowest demand — defer for launch: <b>${esc(bottom.map(b=>b.l).join(', '))}</b>.`
+  ].map(t=>`<li>${t}</li>`).join('');
+
+  /* feature chart */
+  new Chart(document.getElementById('featChart'),{type:'bar',
+    data:{labels:featData.map(f=>f.l),datasets:[{data:featData.map(f=>+f.v.toFixed(2)),
+      backgroundColor:featData.map(f=>f.k==='twoModes'?COL.accent:tierColor(f.v)),borderRadius:6,barThickness:18}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x+' / 5 avg interest'}}},
+      scales:{x:{min:0,max:5,grid:{color:COL.line},ticks:{stepSize:1}},y:{grid:{display:false}}}}});
+
+  /* scorecard */
+  document.getElementById('scorecard').innerHTML=scoreData.map(s=>{
+    const c=tierColor(s.v),pct=(s.v/5*100).toFixed(0);
+    return `<div class="score-row"><div class="name">${esc(s.l)}</div>
+      <div class="scoreline"><span class="bar"><span style="width:${pct}%;background:${c}"></span></span>
+      <span class="pill" style="color:${c}">${s.v.toFixed(1)}</span></div></div>`;}).join('');
+
+  /* radar */
+  const radarKeys=[['lookFeel','Calm look'],['flow','Plan flow'],['tapping','Verse tap'],['noteIcon','Note icon'],['controls','Controls'],['scribeVoice','Scribe voice']];
+  new Chart(document.getElementById('expRadar'),{type:'radar',
+    data:{labels:radarKeys.map(r=>r[1]),datasets:[{label:'Avg',data:radarKeys.map(r=>+avgR(r[0]).toFixed(2)),
+      fill:true,backgroundColor:'rgba(217,122,52,.16)',borderColor:COL.accent,pointBackgroundColor:COL.accent,pointRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+      scales:{r:{min:0,max:5,ticks:{stepSize:1,backdropColor:'transparent',color:COL.muted},grid:{color:COL.line},angleLines:{color:COL.line},pointLabels:{font:{size:11},color:COL.ink}}}}});
+
+  /* usage */
+  const uOrder=['Most days','A few times','Once','Never'];
+  const sc=count(d=>d.scribe),jc=count(d=>d.journal);
+  new Chart(document.getElementById('usageChart'),{type:'bar',
+    data:{labels:uOrder,datasets:[
+      {label:'Scribe',data:uOrder.map(o=>sc[o]||0),backgroundColor:COL.accent,borderRadius:5},
+      {label:'Journal',data:uOrder.map(o=>jc[o]||0),backgroundColor:COL.blue,borderRadius:5}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:14}}},
+      scales:{x:{grid:{display:false}},y:{beginAtZero:true,ticks:{stepSize:1},grid:{color:COL.line}}}}});
+
+  /* freq doughnut */
+  const fc=count(d=>d.freq);const fOrder=['Daily','A few times a week','Weekly','Occasionally','Rarely / never'].filter(o=>fc[o]);
+  new Chart(document.getElementById('freqChart'),{type:'doughnut',
+    data:{labels:fOrder,datasets:[{data:fOrder.map(o=>fc[o]),backgroundColor:[COL.good,COL.blue,'#9a86c4',COL.warn,'#b9b1a3'],borderColor:'#fffdf8',borderWidth:2}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'right',labels:{boxWidth:12,padding:10,font:{size:11}}}}}});
+
+  /* music doughnut */
+  const mc=count(d=>d.musicUse);const mOrder=['Most sessions','Sometimes','Once','Never'].filter(o=>mc[o]);
+  new Chart(document.getElementById('musicChart'),{type:'doughnut',
+    data:{labels:mOrder,datasets:[{data:mOrder.map(o=>mc[o]),backgroundColor:[COL.good,COL.blue,COL.warn,'#b9b1a3'],borderColor:'#fffdf8',borderWidth:2}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'right',labels:{boxWidth:12,padding:10,font:{size:11}}}}}});
+
+  /* friction (auto from text fields) */
+  const FRIC=[['stuck','Got stuck / frustrated',COL.bad],['confusing','Felt confusing',COL.warn],['clunky','Clunky or slow',COL.warn],['couldnt','Couldn’t figure out how to do',COL.blue]];
+  const fricHtml=FRIC.map(([key,label,color])=>{
+    const items=RAW.filter(d=>!isEmpty(d.text?.[key])).map(d=>({t:d.text[key],who:d.name}));
+    if(!items.length)return '';
+    return `<div class="fric-group">
+      <div class="fric-head"><span class="chip" style="background:${color}">${esc(label)}</span><span class="cnt">${items.length} of ${N} mentioned</span></div>
+      ${items.map(i=>`<div class="fric-item">${esc(i.t)}<span class="who">— ${esc(i.who)}</span></div>`).join('')}
+    </div>`;}).join('');
+  document.getElementById('friction').innerHTML=fricHtml||'<p class="ch-sub">No friction reported yet.</p>';
+
+  /* verbatim */
+  const q=(t,w)=>`<div class="quote"><p>“${esc(t)}”</p><span class="who">— ${esc(w)}</span></div>`;
+  const nonEmpty=key=>RAW.filter(d=>!isEmpty(d.text?.[key]));
+  document.getElementById('bestQuotes').innerHTML=nonEmpty('best').map(d=>q(d.text.best,d.name)).join('');
+  document.getElementById('oneQuotes').innerHTML=nonEmpty('one').map(d=>q(d.text.one,d.name)).join('');
+  document.getElementById('mostQuotes').innerHTML=nonEmpty('most').map(d=>q(d.text.most,d.name)).join('');
+}
+</script>
+</body>
+</html>

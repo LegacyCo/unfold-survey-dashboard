@@ -1,0 +1,45 @@
+name: Sync Unfold Beta survey data
+
+# Re-pulls + anonymizes survey responses from Notion and commits data.json
+# when anything changed. Runs on a schedule + on demand. GitHub Pages serves the repo root.
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # daily at 12:00 UTC
+  workflow_dispatch: {}      # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-survey
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch + anonymize latest responses from Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        run: node fetch-data.js
+
+      - name: Commit if data changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data.json; then
+            echo "No new responses — nothing to commit."
+          else
+            git add data.json
+            git commit -m "chore: sync anonymized survey data [skip ci]"
+            git push
+            echo "Committed updated survey data."
+          fi

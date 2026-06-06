@@ -1,0 +1,277 @@
+{
+  "generatedAt": "2026-06-06T15:00:30.511Z",
+  "source": "Notion · Unfold Beta — User Survey",
+  "anonymized": true,
+  "responses": [
+    {
+      "name": "Tester 5",
+      "submitted": "2026-06-06T14:22:00.000Z",
+      "r": {
+        "lookFeel": 5,
+        "flow": 5,
+        "tapping": 5,
+        "noteIcon": 5,
+        "onboarding": 5,
+        "controls": 6,
+        "scribeVoice": 4,
+        "journalEase": 2
+      },
+      "f": {
+        "audio": 5,
+        "twoModes": 5,
+        "planCustom": 5,
+        "reminders": 4,
+        "printExport": 3,
+        "offline": 1,
+        "group": 1,
+        "moreMusic": 1,
+        "shareImage": 1,
+        "watch": 1
+      },
+      "text": {
+        "best": "Easy to navigate",
+        "most": "Scripture",
+        "rarely": "Markers and journal",
+        "one": "Audio",
+        "clunky": "None",
+        "confusing": "None",
+        "stuck": "",
+        "couldnt": "",
+        "journalMore": "",
+        "rightMoment": "",
+        "ordering": "No5",
+        "translation": "Yes",
+        "anythingElse": "",
+        "scribeMiss": ""
+      },
+      "freq": "Daily",
+      "days": "4–7",
+      "musicUse": "Never",
+      "musicPlayer": "The music option should be removed entirely",
+      "scribe": "A few times",
+      "journal": "A few times",
+      "device": [
+        "iPhone"
+      ],
+      "exploreLiked": [
+        "Agree"
+      ]
+    },
+    {
+      "name": "Tester 4",
+      "submitted": "2026-06-06T05:22:00.000Z",
+      "r": {
+        "lookFeel": 4,
+        "flow": 5,
+        "tapping": 5,
+        "noteIcon": 5,
+        "onboarding": 5,
+        "controls": 5,
+        "scribeVoice": 5,
+        "journalEase": 5
+      },
+      "f": {
+        "audio": 5,
+        "twoModes": 5,
+        "planCustom": 5,
+        "reminders": 5,
+        "printExport": 5,
+        "offline": 5,
+        "group": 5,
+        "moreMusic": 1,
+        "shareImage": 1,
+        "watch": 5
+      },
+      "text": {
+        "best": "The scribe",
+        "most": "Your notes to get perspective and insights",
+        "rarely": "Journal because I just don’t journal",
+        "one": "Archiving scribe conversations so you can reference the conversations you have with it",
+        "clunky": "Some of the image cropping was off. Also when typing to the scribe the text box was cut off.",
+        "confusing": "",
+        "stuck": "",
+        "couldnt": "",
+        "journalMore": "",
+        "rightMoment": "",
+        "ordering": "No. I thought it was great to have a reading plan that jumped around.",
+        "translation": "NASB is good. I am looking forward to seeing other translations.",
+        "anythingElse": "",
+        "scribeMiss": ""
+      },
+      "freq": "Weekly",
+      "days": "1–3",
+      "musicUse": "Never",
+      "musicPlayer": "The music option should be removed entirely",
+      "scribe": "Most days",
+      "journal": "Never",
+      "device": [
+        "iPhone"
+      ],
+      "exploreLiked": [
+        "Agree"
+      ]
+    },
+    {
+      "name": "Tester 3",
+      "submitted": "2026-06-06T04:40:00.000Z",
+      "r": {
+        "lookFeel": 3,
+        "flow": 4,
+        "tapping": 4,
+        "noteIcon": 5,
+        "onboarding": 2,
+        "controls": 4,
+        "scribeVoice": 4,
+        "journalEase": 1
+      },
+      "f": {
+        "audio": 2,
+        "twoModes": 5,
+        "planCustom": 3,
+        "reminders": 2,
+        "printExport": 5,
+        "offline": 4,
+        "group": 3,
+        "moreMusic": 5,
+        "shareImage": 2,
+        "watch": 1
+      },
+      "text": {
+        "best": "Notes and commentary",
+        "most": "Commentary",
+        "rarely": "Journal",
+        "one": "Reading history that you can link back to (in either Reading or Explore mode.",
+        "clunky": "Multiple crashes when exiting the Profile Menu.",
+        "confusing": "Multiple times the reading plan reset back to Psalms 1.",
+        "stuck": "- [ ] Never loaded Isaiah 76 on fresh open.  Totally Stuck. I can select verses in explore mode but when I resume the reading plan it goes blank on Isaiah 76. Can’t mark as read or anything. Tried multiple restarts. Same issue. Gave up.",
+        "couldnt": "Have bookmarks and journal entries link back to context original . Go backwards in the reading plan.",
+        "journalMore": "Link back to the context scripture. Make longer entries visible while typing. You couldn’t see what you were typing.",
+        "rightMoment": "I liked being able to ask Scribe questions. The answers were pretty great, even when I tried to push it into polarizing territory.",
+        "ordering": "",
+        "translation": "",
+        "anythingElse": "",
+        "scribeMiss": ""
+      },
+      "freq": "Daily",
+      "days": "4–7",
+      "musicUse": "Sometimes",
+      "musicPlayer": "Pinned to the screen — always one tap away",
+      "scribe": "Most days",
+      "journal": "A few times",
+      "device": [
+        "iPhone"
+      ],
+      "exploreLiked": [
+        "Agree"
+      ]
+    },
+    {
+      "name": "Tester 2",
+      "submitted": "2026-06-06T01:13:00.000Z",
+      "r": {
+        "lookFeel": 5,
+        "flow": 5,
+        "tapping": 5,
+        "noteIcon": 5,
+        "onboarding": 6,
+        "controls": 5,
+        "scribeVoice": 5,
+        "journalEase": 5
+      },
+      "f": {
+        "audio": 5,
+        "twoModes": 5,
+        "planCustom": 4,
+        "reminders": 4,
+        "printExport": 5,
+        "offline": 3,
+        "group": 3,
+        "moreMusic": 3,
+        "shareImage": 5,
+        "watch": 1
+      },
+      "text": {
+        "best": "Your notes, and the ask scribe",
+        "most": "Notes/ journaling.  Loved it option.",
+        "rarely": "N/A",
+        "one": "Other Bible translations",
+        "clunky": "Highlighting.",
+        "confusing": "- [ ] Can I highlight specific things not just the entire verse? - [ ] Will the Bible reading have voice reading it or is it just read only? - [ ] Will there be an option to compare translations side-by-side? - [ ] Will there be a concordance or search function? - [ ] Will there be a search option by keyword, verse, topic, or phrase? - [ ] Can notes be tagged by topic (grief, faith, prayer, forgiveness, etc.)?",
+        "stuck": "When I first logged in it wasn't clear (to me) how to find all the options that were available.  I finally realized the tiny orange U in the upper right corner had a drop down of optionsz",
+        "couldnt": "No",
+        "journalMore": "Will there be an option to key word search notes?",
+        "rightMoment": "Bible reading/note and journal.  Easy to follow.",
+        "ordering": "No",
+        "translation": "NLT, NAS, Amplified",
+        "anythingElse": "Love the app.  This will be an amazing tool/resource.",
+        "scribeMiss": "N/A"
+      },
+      "freq": "Daily",
+      "days": "1–3",
+      "musicUse": "Once",
+      "musicPlayer": "Pinned to the screen — always one tap away",
+      "scribe": "Most days",
+      "journal": "A few times",
+      "device": [
+        "iPhone"
+      ],
+      "exploreLiked": [
+        "Agree"
+      ]
+    },
+    {
+      "name": "Tester 1",
+      "submitted": "2026-06-05T19:26:00.000Z",
+      "r": {
+        "lookFeel": 5,
+        "flow": 4,
+        "tapping": 5,
+        "noteIcon": 1,
+        "onboarding": 5,
+        "controls": 5,
+        "scribeVoice": 5,
+        "journalEase": null
+      },
+      "f": {
+        "audio": 5,
+        "twoModes": 5,
+        "planCustom": 5,
+        "reminders": 5,
+        "printExport": 1,
+        "offline": 5,
+        "group": 1,
+        "moreMusic": 1,
+        "shareImage": 1,
+        "watch": 1
+      },
+      "text": {
+        "best": "It “felt” like it personified  Neil’s personality",
+        "most": "I don’t know that I figured out the “features” - was only experiencing what pulled up when I opened the app",
+        "rarely": "I didn’t figure out adequately the various features",
+        "one": "Neil in virtual reality, reading the Scriptures to me 😂",
+        "clunky": "This could be because of my age and my familiarity with other Bible apps, I was unable to locate how to personally navigate to other scriptures easily. Would have loved to have figured that out (if, indeed, it’s available). Because there was no “tutorial” for us older dum-dums, it make the app slightly clunky for me. However, I would gladly use it and recommend it as I feel it will develop and be a great source for people who are loving Neil’s content.",
+        "confusing": "",
+        "stuck": "",
+        "couldnt": "How to navigate to other portions of scripture",
+        "journalMore": "",
+        "rightMoment": "",
+        "ordering": "",
+        "translation": "NASB",
+        "anythingElse": "",
+        "scribeMiss": ""
+      },
+      "freq": "Daily",
+      "days": "1–3",
+      "musicUse": "Never",
+      "musicPlayer": "Hidden by default — on when I want it (current)",
+      "scribe": "A few times",
+      "journal": "Never",
+      "device": [
+        "iPhone"
+      ],
+      "exploreLiked": [
+        "Agree"
+      ]
+    }
+  ]
+}
