@@ -1,8 +1,224 @@
 {
-  "generatedAt": "2026-06-06T15:00:30.511Z",
+  "generatedAt": "2026-06-08T16:00:14.259Z",
   "source": "Notion · Unfold Beta — User Survey",
   "anonymized": true,
   "responses": [
+    {
+      "name": "Tester 9",
+      "submitted": "2026-06-08T14:58:00.000Z",
+      "r": {
+        "lookFeel": 5,
+        "flow": 5,
+        "tapping": 5,
+        "noteIcon": 5,
+        "onboarding": 5,
+        "controls": 5,
+        "scribeVoice": 5,
+        "journalEase": 5
+      },
+      "f": {
+        "audio": 5,
+        "twoModes": 5,
+        "planCustom": 5,
+        "reminders": 5,
+        "printExport": 5,
+        "offline": 5,
+        "group": 5,
+        "moreMusic": 5,
+        "shareImage": 5,
+        "watch": 5
+      },
+      "text": {
+        "best": "Commentaries",
+        "most": "I used the commentary and study notes most along with the journal and bookmarks so that I could transcribe them into my bible journal",
+        "rarely": "None",
+        "one": "While I’ve loved reading through the commentaries and study notes and being able to sit with the passages, on busier days I’d love the option to have a more condensed version with main points and highlights so I can still stay on track.",
+        "clunky": "",
+        "confusing": "Understanding how progress is tracked. I was looking for a way to be able to go back to my previous days of reading directly from the progress section but I couldn’t go back to it once I read it. However, I realized I could get back to it through Bible mode.",
+        "stuck": "Using the highlighter. Tapping the verse to highlight was easy, although I wish I had the option to highlight a few words instead of the entire sentence. Also, when I tapped a verse and the screen with the highlighters came up, if I tapped the little arrow to pull the screen up, I was not able to pull it back down. I had to come out of the app to get back to the reading plan.",
+        "couldnt": "",
+        "journalMore": "Being able to copy and paste some of Scribes answers to the journal",
+        "rightMoment": "The study notes icon placed next to the corresponding verses flowed so well and made for fluid reading",
+        "ordering": "The only thing I’d suggest is explaining the reason the books are ordered and grouped the way they are so the reader has a clear understanding of why they’re ordered that way",
+        "translation": "NIV",
+        "anythingElse": "Unfold is unlike any other Bible app I’ve used. I’m usually drawn to the aesthetics of something before I use it and often times I’d find something beautiful but it lacks depth. Unfold is set apart in that regard- its design reflects both the beauty AND the depth of scripture.",
+        "scribeMiss": ""
+      },
+      "freq": "Daily",
+      "days": "4–7",
+      "musicUse": "Most sessions",
+      "musicPlayer": "Pinned to the screen — always one tap away",
+      "scribe": "Most days",
+      "journal": "Most days",
+      "device": [
+        "iPad"
+      ],
+      "exploreLiked": [
+        "Agree"
+      ]
+    },
+    {
+      "name": "Tester 8",
+      "submitted": "2026-06-07T15:22:00.000Z",
+      "r": {
+        "lookFeel": 5,
+        "flow": 5,
+        "tapping": 5,
+        "noteIcon": 5,
+        "onboarding": 4,
+        "controls": 4,
+        "scribeVoice": 5,
+        "journalEase": null
+      },
+      "f": {
+        "audio": 5,
+        "twoModes": 3,
+        "planCustom": 3,
+        "reminders": 3,
+        "printExport": 3,
+        "offline": 5,
+        "group": 1,
+        "moreMusic": 5,
+        "shareImage": 1,
+        "watch": 1
+      },
+      "text": {
+        "best": "It was nice that the reading program has no end that it just keeps going and that took the pressure off of having to complete the tasks daily",
+        "most": "The reading plan",
+        "rarely": "The journal- mainly because I have a journal that I hand write in and when I’m handwriting in my journal is when my thoughts flow easier for me",
+        "one": "Audio reading",
+        "clunky": "",
+        "confusing": "",
+        "stuck": "",
+        "couldnt": "",
+        "journalMore": "",
+        "rightMoment": "",
+        "ordering": "",
+        "translation": "TPT",
+        "anythingElse": "",
+        "scribeMiss": ""
+      },
+      "freq": "Daily",
+      "days": "4–7",
+      "musicUse": "Most sessions",
+      "musicPlayer": "Hidden by default — on when I want it (current)",
+      "scribe": "A few times",
+      "journal": "Never",
+      "device": [
+        "iPhone"
+      ],
+      "exploreLiked": [
+        "Agree"
+      ]
+    },
+    {
+      "name": "Tester 7",
+      "submitted": "2026-06-07T14:35:00.000Z",
+      "r": {
+        "lookFeel": 5,
+        "flow": 5,
+        "tapping": 5,
+        "noteIcon": 5,
+        "onboarding": 5,
+        "controls": 5,
+        "scribeVoice": null,
+        "journalEase": null
+      },
+      "f": {
+        "audio": 5,
+        "twoModes": 5,
+        "planCustom": 5,
+        "reminders": 4,
+        "printExport": 2,
+        "offline": 5,
+        "group": 4,
+        "moreMusic": 4,
+        "shareImage": 1,
+        "watch": 2
+      },
+      "text": {
+        "best": "Smooth interface",
+        "most": "I liked the comments, they were good for background and context.",
+        "rarely": "Journal.  It’s just not natural for me to keep notes in an app, I won’t come back to them",
+        "one": "Progress viewer",
+        "clunky": "It locked up once, and sometimes it stays black when i open the app for about 10 seconds before bringing up the title screen",
+        "confusing": "",
+        "stuck": "",
+        "couldnt": "It would be nice to see progress in the reading plan.  Maybe that I’m on pace to read through the whole Bible (or even better, set a goal and it would keep track)",
+        "journalMore": "",
+        "rightMoment": "The branding is great… the name, the colors, the flow and feel of the app is just as it should be.",
+        "ordering": "",
+        "translation": "I did not see an option to Choose",
+        "anythingElse": "Good job brother!!  It’s excellent.",
+        "scribeMiss": ""
+      },
+      "freq": "A few times a week",
+      "days": "4–7",
+      "musicUse": "Sometimes",
+      "musicPlayer": "Pinned to the screen — always one tap away",
+      "scribe": "Once",
+      "journal": "Never",
+      "device": [
+        "iPhone"
+      ],
+      "exploreLiked": [
+        "Agree"
+      ]
+    },
+    {
+      "name": "Tester 6",
+      "submitted": "2026-06-07T14:05:00.000Z",
+      "r": {
+        "lookFeel": 5,
+        "flow": 5,
+        "tapping": 105,
+        "noteIcon": 5,
+        "onboarding": 5,
+        "controls": 5,
+        "scribeVoice": 5,
+        "journalEase": null
+      },
+      "f": {
+        "audio": 1,
+        "twoModes": 5,
+        "planCustom": 1,
+        "reminders": 4,
+        "printExport": 5,
+        "offline": 4,
+        "group": 1,
+        "moreMusic": 3,
+        "shareImage": 1,
+        "watch": 1
+      },
+      "text": {
+        "best": "Love your vids and commentary! Especially your comments to go w/ some of the verses. Takes the word to a much deeper level. Hope these continue thru out!55",
+        "most": "Your commentary, vids and thoughts",
+        "rarely": "Journal - but can definitely see using it in the future!",
+        "one": "Not sure",
+        "clunky": "Notta",
+        "confusing": "None",
+        "stuck": "-",
+        "couldnt": "No",
+        "journalMore": "",
+        "rightMoment": "The vids, your thoughts and commentary",
+        "ordering": "No",
+        "translation": "Good w/ the NASB",
+        "anythingElse": "This is a game changer - having all this in one place is great!",
+        "scribeMiss": "Notta"
+      },
+      "freq": "Daily",
+      "days": "4–7",
+      "musicUse": "Most sessions",
+      "musicPlayer": "Pinned to the screen — always one tap away",
+      "scribe": "A few times",
+      "journal": "Never",
+      "device": [
+        "iPhone"
+      ],
+      "exploreLiked": [
+        "Agree"
+      ]
+    },
     {
       "name": "Tester 5",
       "submitted": "2026-06-06T14:22:00.000Z",
